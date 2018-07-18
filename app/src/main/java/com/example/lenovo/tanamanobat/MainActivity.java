@@ -1,11 +1,13 @@
 package com.example.lenovo.tanamanobat;
 
+import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,18 +25,23 @@ public class MainActivity extends AppCompatActivity {
 
         String a = String.valueOf(R.string.video);
 
+        Intent intent = getIntent();
+        String position = intent.getExtras().getString("position");
+        Log.d("Databya",String.valueOf(position));
+        if (position.equals("India")) {
+
+            listtanaman = new ArrayList<>();
+            listtanaman.add(new PoJo("tes", a, "deskripsi", R.drawable.grain));
+            listtanaman.add(new PoJo("Makanan", "Kimmak", "Pusing", R.mipmap.ic_launcher));
 
 
-        listtanaman = new ArrayList<>();
-        listtanaman.add(new  PoJo("tes",a,"deskripsi",R.drawable.grain));
-        listtanaman.add(new PoJo("Makanan","Kimmak","Pusing",R.mipmap.ic_launcher));
+            RecyclerView myrv = (RecyclerView) findViewById(R.id.recycler);
+            myAdapter = new RecyclerAdapter(this, listtanaman);
+            myrv.setLayoutManager(new LinearLayoutManager(this));
+            //myrv.setLayoutManager(new GridLayoutManager(this,2));
+            myrv.setAdapter(myAdapter);
 
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recycler);
-        myAdapter = new RecyclerAdapter(this,listtanaman);
-        myrv.setLayoutManager(new LinearLayoutManager(this));
-        //myrv.setLayoutManager(new GridLayoutManager(this,2));
-        myrv.setAdapter(myAdapter);
-
+        }
     }
 
     @Override

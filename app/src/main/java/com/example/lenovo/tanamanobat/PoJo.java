@@ -5,16 +5,15 @@ package com.example.lenovo.tanamanobat;
  */
 
 public class PoJo {
+
     private String Title;
     private String Category;
     private String Description;
     private int Thumbnail;
 
-    public PoJo() {
-    }
 
     // Constructor
-    public PoJo(String title, String category, String description, int thumbnail) {
+    public PoJo( String title, String category, String description, int thumbnail) {
         Title = title;
         Category = category;
         Description = description;
@@ -40,6 +39,7 @@ public class PoJo {
     }
 
 
+
     // Setter
     public void setTitle(String title) {
         Title = title;
@@ -56,5 +56,7 @@ public class PoJo {
     public void setThumbnail(int thumbnail) {
         Thumbnail = thumbnail;
     }
+
+
 }
 
